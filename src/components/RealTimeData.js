@@ -6,7 +6,7 @@ const RealTimeData = () => {
   const queryClient = useQueryClient();
   const [data, setData] = useState([]);
 
-  const { lastMessage } = useWebSocket('ws://localhost:8080/ws/updates');  // Update with your backend WebSocket URL
+  const { lastMessage } = useWebSocket('ws://13.200.189.76:5001/ws/updates');  // Update with your backend WebSocket URL
 
   useEffect(() => {
     if (lastMessage !== null) {
