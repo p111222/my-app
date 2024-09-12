@@ -13,7 +13,6 @@ const RealTimeData = () => {
       try {
         const newData = JSON.parse(lastMessage.data);
 
-        // Update TanStack Query cache
         queryClient.setQueryData(['realTimeData'], newData);
 
         // Update local state
