@@ -8,7 +8,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
-        <h1>My Application</h1>
+        {/* <h1>My Application</h1> */}
         <RealTimeData />
         {/* Other components */}
       </div>
