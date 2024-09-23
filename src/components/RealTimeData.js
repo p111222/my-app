@@ -10,7 +10,8 @@ const RealTimeData = () => {
   const queryClient = useQueryClient();
   const [data, setData] = useState([]);
 
-  const { lastMessage } = useWebSocket('ws://localhost:8080/ws/updates');
+  // const { lastMessage } = useWebSocket('ws://localhost:8080/ws/updates');
+  const { lastMessage } = useWebSocket('ws://3.108.54.64:8080/ws/updates');
 
   useEffect(() => {
     if (lastMessage !== null) {
