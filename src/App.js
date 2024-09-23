@@ -1,63 +1,48 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import RealTimeData from './components/RealTimeData';  // Adjust the import path as necessary
+import TabularView from './components/TabularView';
+import { Button, Container } from '@mui/material'; // Import MUI components
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="App">
-        {/* <h1>My Application</h1> */}
-        <RealTimeData />
-        {/* Other components */}
-      </div>
+      <Router>
+        <Container>
+          <h1 style={{  marginLeft: '400px' }}>Welcome to Real Time Data</h1>
+          {/* Navigation Buttons */}
+          <div style={{ marginBottom: '20px', marginLeft: '480px' }}>
+            <Button
+              component={Link}
+              to="/cardview"
+              variant="contained"
+              color="primary"
+              sx={{ marginRight: 2 }}
+            >
+              Card View
+            </Button>
+            <Button
+              component={Link}
+              to="/tabularview"
+              variant="contained"
+              color="primary"
+            >
+              Tabular View
+            </Button>
+          </div>
+
+          <Routes>
+            <Route path="/"/>
+            <Route path="/cardview" element={<RealTimeData />} />
+            <Route path="/tabularview" element={<TabularView />} />
+          </Routes>
+        </Container>
+      </Router>
     </QueryClientProvider>
   );
 }
 
 export default App;
-
-
-// import React, { useState, Suspense } from 'react';
-// import './App.css';
-
-// // Lazy load components
-// const ComponentA = React.lazy(() => import('./components/ComponentA'));
-// const ComponentB = React.lazy(() => import('./components/ComponentB'));
-
-// function App() {
-//   const [showComponentA, setShowComponentA] = useState(false);
-//   const [showComponentB, setShowComponentB] = useState(false);
-
-//   return (
-//     <div className="App">
-//       <h1>Lazy Loading Components Example</h1>
-//       <div className="button-container">
-//         <button onClick={() => setShowComponentA(!showComponentA)}>
-//           {showComponentA ? 'Hide' : 'Show'} Component A
-//         </button>
-//         <button onClick={() => setShowComponentB(!showComponentB)}>
-//           {showComponentB ? 'Hide' : 'Show'} Component B
-//         </button>
-//       </div>
-
-//       {/* Suspense fallback while the component is loading */}
-//       <div className="component-container">
-//         {showComponentA && (
-//           <Suspense fallback={<div>Loading Component A...</div>}>
-//             <ComponentA />
-//           </Suspense>
-//         )}
-
-//         {showComponentB && (
-//           <Suspense fallback={<div>Loading Component B...</div>}>
-//             <ComponentB />
-//           </Suspense>
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default App;
