@@ -17,7 +17,7 @@ const TabularView = () => {
   const [data, setData] = useState([]);
 
   // const { lastMessage } = useWebSocket('ws://localhost:8080/ws/updates');
-  const { lastMessage } = useWebSocket('ws://3.108.54.64:6001/ws/updates');
+  const { lastMessage } = useWebSocket('ws://3.108.54.64:6000/ws/updates');
 
   useEffect(() => {
     if (lastMessage !== null) {
