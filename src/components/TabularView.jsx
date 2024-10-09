@@ -125,16 +125,23 @@ const RealTimeTable = () => {
         const newData = JSON.parse(lastMessage.data);
         console.log('New WebSocket data:', newData);
 
-        // Handle incoming data
+        // Handle incomingx data
         if (Array.isArray(newData)) {
           setData(newData);
         } else if (newData && newData.id) {
           setData((prevData) => {
-            const updatedData = prevData.filter(item => item.id !== newData.id);
-            return [newData, ...updatedData];
+            // const updatedData = prevData.filter(item => item.id !== newData.id);
+            // return [newData, ...updatedData];
+            if (newData.data) {
+              const updatedData = prevData.filter(item => item.id !== newData.id);
+              return [newData, ...updatedData];
+            } else {
+              return prevData.filter(item => item.id !== newData.id);
+            }
           });
         } else {
-          console.error('Invalid data received from WebSocket:', newData);
+          // return prevData.filter(item => item.id !== newData.id);
+          // console.error('Invalid data received from WebSocket:', newData);
         }
       } catch (e) {
         console.error('Failed to parse WebSocket JSON data:', e);
